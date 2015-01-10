@@ -9,3 +9,6 @@
 <li>BeautifulSoup</li>
 <li>Mandrill</li>
 </ul>
+
+<h2>Before Use</h2>
+<p>Be sure that you create a file called 'config' with no file extension containing your own Mandrill API Key in order for the program to work sucessfully.</p>
