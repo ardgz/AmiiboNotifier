@@ -3,9 +3,7 @@ import urllib
 import urllib2
 import sys
 import re
-import time
 import os
-import sendgrid
 
 def connectAndRetrieveData(zipStr, dcpiStr):
 	url = 'http://brickseek.com/target-inventory-checker'
