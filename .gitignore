@@ -1,0 +1,4 @@
+# Config file containing API Key
+config
+# Python compile files
+*.pyc
