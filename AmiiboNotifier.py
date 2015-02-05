@@ -82,7 +82,7 @@ class Application(Frame):
 		waveTwoAmiibos = ['Diddy Kong', 'Zelda', 'Luigi', 'Captain Falcon',
 							'Pit', 'Little Mac']
 		waveThreeAmiibos = ['Bowser', 'Toon Link', 'Sheik', 'Sonic',
-							'Mega Man', 'King Dedede', 'Ike']
+							'Mega Man', 'King Dedede', 'Ike', 'Rosalina & Luma']
 		
 		allAmiibos = []
 		for i in range(len(waveOneAmiibos)):

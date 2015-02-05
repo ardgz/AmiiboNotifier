@@ -32,15 +32,19 @@ def connectAndRetrieveData(zipStr, dcpiStr):
 				tags_list.append(str(item))
 				
 		strings_list = []
-				
+		
 		for tag in tags_list:
-			aString = re.sub(r'<tr><td style=""><b>', "", tag)
-			aString = re.sub(r'</b><br>', " | ", aString)
+			aString = re.sub(r'<tr><td style=""><b>', "", tag) #checked
+			aString = re.sub(r'\s<a.*?></a>', "", aString)
+			aString = re.sub(r'</a><a class.*?></a>', "", aString)
+			aString = re.sub(r'</b><br/>', " | ", aString) 
 			aString = re.sub(r'<br>', " | ", aString)
 			aString = re.sub(r'<br/>', " | ", aString)
-			aString = re.sub(r'</br></br></td><td><b>', " | ", aString)
-			aString = re.sub(r'</b><a style="color:red">|</b><a style="color:green">', " ", aString)
-			aString = re.sub(r'</a> \| <b>', " | ", aString)
+			aString = re.sub(r'</br></td><td><b>', " | ", aString)
+			aString = re.sub(r'</b><a style="color:red">|</b><a style="color:green">', "", aString)
+			aString = re.sub(r'<b>', "", aString)
+			aString = re.sub(r'<b>', "", aString)
+			aString = re.sub(r'</b>', "", aString)
 			aString = re.sub(r'</b>', "", aString)
 			aString = re.sub(r'</td></tr>', "", aString)
 			strings_list.append(aString)
@@ -60,7 +64,6 @@ def analyzeStoreStock(targetStoreList, dcpiStr):
 		if "Yes" in storeData[4]:
 			amiibo_name = getAmiiboName(dcpiStr)
 			email_body = prepareEmailStoreData(storeData, amiibo_name, email_body)
-	
 	return email_body
 
 def getAmiiboName(dcpiStr):
@@ -100,6 +103,22 @@ def getAmiiboName(dcpiStr):
 		return 'Pit'
 	elif dcpiStr == '207-00-5018':
 		return 'Captain Falcon'
+	elif dcpiStr == '207-00-5019':
+		return 'Toon Link'
+	elif dcpiStr == '207-00-5020':
+		return 'Bowser'
+	elif dcpiStr == '207-00-5021':
+		return 'Rosalina & Luma'
+	elif dcpiStr == '207-00-5022':
+		return 'Mega Man'
+	elif dcpiStr == '207-00-5023':
+		return 'Sonic'
+	elif dcpiStr == '207-00-5024':
+		return 'Sheik'
+	elif dcpiStr == '207-00-5025':
+		return 'King Dedede'
+	elif dcpiStr == '207-00-5026':
+		return 'Ike'
 
 def getAmiiboDCPI(amiiboName):
 	if amiiboName == 'Mario':
@@ -138,6 +157,22 @@ def getAmiiboDCPI(amiiboName):
 		return '207-00-5017'
 	if amiiboName == 'Captain Falcon':
 		return '207-00-5018'
+	if amiiboName == 'Toon Link':
+		return '207-00-5019'
+	if amiiboName == 'Bowser':
+		return '207-00-5020'
+	if amiiboName == 'Rosalina & Luma':
+		return '207-00-5021'
+	if amiiboName == 'Mega Man':
+		return '207-00-5022'
+	if amiiboName == 'Sonic':
+		return '207-00-5023'
+	if amiiboName == 'Sheik':
+		return '207-00-5024'
+	if amiiboName == 'King Dedede':
+		return '207-00-5025'
+	if amiiboName == 'Ike':
+		return '207-00-5026'
 
 def prepareEmailStoreData(targetStore, amiibo_name, email_body):
 	email_body += "AMIIBO: " + amiibo_name + '\n'
@@ -147,6 +182,7 @@ def prepareEmailStoreData(targetStore, amiibo_name, email_body):
 	email_body += "Distance: " + targetStore[3] + '\n'
 	email_body += targetStore[4] + '\n'
 	email_body += targetStore[5] + '\n'
+	email_body += targetStore[6] + '\n'
 	email_body += "==================================\n"
 	return email_body
 
