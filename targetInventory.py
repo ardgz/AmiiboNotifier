@@ -47,6 +47,7 @@ def connectAndRetrieveData(zipStr, dcpiStr):
 			aString = re.sub(r'</b>', "", aString)
 			aString = re.sub(r'</b>', "", aString)
 			aString = re.sub(r'</td></tr>', "", aString)
+			aString = re.sub(r'</td><td.*?>', "", aString)
 			strings_list.append(aString)
 		
 		targetStoreList = []
